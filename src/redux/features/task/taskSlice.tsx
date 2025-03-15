@@ -14,7 +14,7 @@ const initialState : InitialState = {
         title: "Learn Redux",
         description: "Learn Redux with Redux Toolkit",
         isCompleted: false,
-        priority: "high",
+        priority: "Low",
         dueDate : "2025-03-20",
      },
     {
@@ -22,7 +22,7 @@ const initialState : InitialState = {
         title: "Learn Next js",
         description: "Learn Next js with Redux Toolkit",
         isCompleted: false,
-        priority: "high",
+        priority: "High",
         dueDate : "2025-03-26",
      }
  ],

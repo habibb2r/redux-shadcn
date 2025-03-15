@@ -1,3 +1,4 @@
+import TaskCard from "@/components/modules/TaskCard";
 import { selectFilters, selectTasks } from "@/redux/features/task/taskSlice";
 import { useAppSelector } from "@/redux/hooks";
 
@@ -9,7 +10,12 @@ const Tasks = () => {
     console.log(filter)
     return (
         <div>
-            This is task components
+            <h1 className="font-bold text-4xl text-center">Tasks</h1>
+            <div className="p-5">
+                {
+                    tasks.map((task) => <TaskCard task={task} />)
+                }
+            </div>
         </div>
     );
 };
