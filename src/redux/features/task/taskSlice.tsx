@@ -47,6 +47,17 @@ const todoSlice = createSlice({
         addTask: (state, action: PayloadAction<ITask>) =>{
             const taskData = createTask(action.payload);
             state.tasks.push(taskData);
+        },
+
+        toogleCompletedTask: (state, action: PayloadAction<string>) =>{
+            state.tasks.forEach(task=> task.id === action.payload ? task.isCompleted = !task.isCompleted : task)
+        },
+
+        deleteTask: (state, action: PayloadAction<string>) =>{
+            state.tasks = state.tasks.filter(task=> task.id !== action.payload);
+        },
+        updateFilter: (state, action: PayloadAction<"All" | "High" | "Low" | "Medium">) =>{
+            state.filter = action.payload;
         }
     }
 })
@@ -58,6 +69,6 @@ export const selectFilters = (state: RootState)=>{
     return state.todo.filter;
 }
 
-export const { addTask } = todoSlice.actions; 
+export const { addTask, toogleCompletedTask ,deleteTask} = todoSlice.actions; 
 
 export default todoSlice.reducer;
