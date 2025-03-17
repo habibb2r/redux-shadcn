@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -34,14 +34,14 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "../ui/calendar";
 import { useAppDispatch } from "@/redux/hooks";
 import { addTask } from "@/redux/features/task/taskSlice";
+import { ITask } from "@/types/types";
 
 
 export function AddTaskModal() {
   const form = useForm();
   const dispatch = useAppDispatch()
-  const onSubmit = (data) => {
-    console.log(data);
-    dispatch(addTask(data))
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    dispatch(addTask(data as ITask))
   };
   return (
     <Dialog>
