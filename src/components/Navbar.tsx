@@ -10,9 +10,9 @@ const Navbar = () => {
                     <img className="h-[50px]" src={logo} alt="" />
                     <h1 className="text-2xl">Task Manager</h1>
                 </div>
-                <div className="flex items-center space-x-4">
-                    <Link to="/">Tasks</Link>
-                    <Link to="/users">Users</Link>
+                <div className="flex items-center space-x-5">
+                    <Link className="font-semibold" to="/">Tasks</Link>
+                    <Link className="font-semibold" to="/users">Users</Link>
                     <ModeToggle />
                 </div>
             </div>

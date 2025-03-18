@@ -1,10 +1,11 @@
 
 import { cn } from '@/lib/utils';
 import { deleteTask, toogleCompletedTask } from '@/redux/features/task/taskSlice';
-import { useAppDispatch } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { ITask } from '@/types/types';
 import { FaTrashCan } from 'react-icons/fa6';
 import { Checkbox } from '../ui/checkbox';
+import { selectUsers } from '@/redux/features/user/userSlice';
 
 
 interface IProps{
@@ -14,7 +15,8 @@ interface IProps{
 
 
 const TaskCard = ({task}: IProps) => {
-
+    const users = useAppSelector(selectUsers);
+    const assignedName = users.find(user=> user.id == task.assignedTo)
     const dispatch = useAppDispatch();
     return (
         <div className="flex justify-between items-start gap-5 p-4 shadow-md shadow-accent">
@@ -27,6 +29,7 @@ const TaskCard = ({task}: IProps) => {
                         } )}></div>
                         <h1  className={cn("font-bold text-3xl", {"line-through" : task.isCompleted })}>{task.title}</h1>
                     </div>
+                    <p>Assigned To : <span className='font-semibold'>{assignedName?.name || "Unassigned"}</span></p>
                     <p>{task.description}</p>
                     </div>
                     <div className="flex flex-col justify-center items-center gap-5">

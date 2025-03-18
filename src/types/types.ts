@@ -5,6 +5,7 @@ export interface ITask{
     isCompleted: boolean;
     priority: "Low" | "Medium" | "High";
     dueDate: string;
+    assignedTo: string | null;
   };
 
   export interface IUser{
