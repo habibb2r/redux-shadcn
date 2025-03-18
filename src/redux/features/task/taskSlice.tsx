@@ -63,12 +63,18 @@ const todoSlice = createSlice({
 })
 
 export const selectTasks = (state: RootState)=>{
-    return state.todo.tasks;
+    const filter = state.todo.filter;
+    if(filter === "All"){
+        return state.todo.tasks;
+    }else{
+        return state.todo.tasks.filter(task=> task.priority === filter);
+    }
+    
 }
 export const selectFilters = (state: RootState)=>{
     return state.todo.filter;
 }
 
-export const { addTask, toogleCompletedTask ,deleteTask} = todoSlice.actions; 
+export const { addTask, toogleCompletedTask ,deleteTask, updateFilter} = todoSlice.actions; 
 
 export default todoSlice.reducer;

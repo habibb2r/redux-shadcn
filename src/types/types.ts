@@ -6,4 +6,9 @@ export interface ITask{
     priority: "Low" | "Medium" | "High";
     dueDate: string;
   };
+
+  export interface IUser{
+    id: string;
+    name: string;
+  }
   
