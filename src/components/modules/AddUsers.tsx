@@ -33,7 +33,9 @@ export function AddUsers() {
   const form = useForm();
   const dispatch = useAppDispatch()
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    dispatch(addUsers(data as IUser))
+    dispatch(addUsers(data as IUser));
+    setOpen(false);
+    form.reset();
   };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
