@@ -24,17 +24,19 @@ import { useAppDispatch } from "@/redux/hooks";
 
 import { addUsers } from "@/redux/features/user/userSlice";
 import { IUser } from "@/types/types";
+import { useState } from "react";
 
 
 
 export function AddUsers() {
+  const [open, setOpen] = useState(false);
   const form = useForm();
   const dispatch = useAppDispatch()
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     dispatch(addUsers(data as IUser))
   };
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline">Add User</Button>
       </DialogTrigger>
